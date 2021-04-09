@@ -3,24 +3,16 @@
     :style="{ backgroundImage: 'url(' + require('@/assets/img/background.jpg') + ')' }"
   >
     <AppHeader 
-      :numCorrect="numCorrect"
+      :nbCorrectAnswers="nbCorrectAnswers"
       :numTotal="numTotal"
     />
-    <!-- Bootstrap's grid system -->
-    <b-container class="bv-example-row" >
-      <b-row>
-        <!-- Bootstrap gives me 12 verticals columns !! 6 means width's half-->
-        <b-col sm="6" offset="3">
-          <AppQuestions 
-            v-if="questions.length"
-            :currentQuestion="questions[index]"
-            :next="next"
-            :increment="increment"
-          />
-        </b-col>
-      </b-row>
-    <!-- Bootstrap's grid system -->
-    </b-container>
+    
+    <AppQuestions 
+      v-if="questions.length"
+      :currentQuestion="questions[index]"
+      :next="next"
+      :increment="increment"
+    />
     
   </div>
 </template>
@@ -39,7 +31,7 @@
       return {
         questions: [],
         index: 0, // index to navigate through all array's questions by clicking the next button
-        numCorrect: 0,
+        nbCorrectAnswers: 0,
         numTotal: 0
       }
     },
@@ -50,7 +42,7 @@
       },
       increment(isCorrect) {
         if(isCorrect) {
-          this.numCorrect++
+          this.nbCorrectAnswers++
         }
         this.numTotal++
       }
@@ -72,12 +64,18 @@
 </script>
 
 <style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+  } 
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #1c2936;
     width: 100%;
     height: 100vh; 
     overflow: hidden;

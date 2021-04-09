@@ -1,39 +1,40 @@
 <template>
-  <div class="questions-container">
-    <b-jumbotron class="container">
-      <template #lead>
-        {{ currentQuestion.question }}
-      </template>
+  <div>
+    <div class="container">
+      <div class="quiz">
+        <div class="quiz-question">
+          <span v-html="currentQuestion.question"></span>
+        </div>
+        <ul class="quiz-answers">
+          <li 
+            class="quiz-answers__answer" 
+            v-for="(answer, index) in mixedAnswers" 
+            :key="index"
+            @click="selectAnswer(index)"  
+            :class="answerClass(index)"
+            >
+            <span v-html="answer"></span>
+          </li>
+        </ul>
+        <div class="quiz-button">
+          <button 
+            class="btn submit-btn"
+            @click="submitAnswer"
+            :disabled="selectedIndex === null || answered"
+            >
+          Submit
+          </button>
+          <button 
+            class="btn next-btn"
+            @click="next"
+            :disabled="selectedIndex === null || !answered"  
+          >
+          Next
+          </button>
+        </div>
+      </div>
+    </div>
 
-      <hr class="my-4">
-
-      <b-list-group>
-        <b-list-group-item 
-          v-for="(answer, index) in mixedAnswers" 
-          :key="index" 
-          @click="selectAnswer(index)"  
-          :class="answerClass(index)"
-        >
-        {{ answer }}
-        </b-list-group-item>
-      </b-list-group>
-
-      <!-- submit button has to be disabled if no answer has been selected or 1 answer has been selected -->
-      <b-button 
-        class="submit-btn"
-        @click="submitAnswer"
-        :disabled="selectedIndex === null || answered"
-      >
-        Validez
-      </b-button>
-
-      <b-button class="next-btn" 
-        @click="next"
-        :disabled="selectedIndex === null"
-      >
-        Suivante
-      </b-button>
-    </b-jumbotron>
   </div>
 </template>
 
@@ -59,13 +60,6 @@
         answered: false
       }
     },
-    // ---------------------------------------------------------------------------
-    // Shuffle each next question but not on the first one : 2 ways to resolve this
-    // 1- I can call SuffleAnswers() in this mounted() section
-    // 2- Or it's easier tu use watch's functionnality as describing it as an object with immediate & handler properties
-    // *** immediate **** prop, instead of running the watch function when currentQuestion updates, it 's going to also
-    // run when currentQuestion first gets passes as props
-    // ---------------------------------------------------------------------------
     watch: {
       currentQuestion: {
         immediate: true,
@@ -134,27 +128,71 @@
 <style lang="scss" scoped>
 
 .container {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.quiz {
+  padding-top: 1rem;
+  margin-top: .5rem;
   background-color: rgb(190, 178, 178);
   box-shadow: 10px 23px 48px 6px rgba(0,0,0,0.75);
   -webkit-box-shadow: 10px 23px 48px 6px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 23px 48px 6px rgba(0,0,0,0.75);
-  border-radius: 1rem;
+   border-radius: 1rem;
 }
-.list-group {
-  margin-bottom: 2.5rem;
-  
-  &-item {
-    font-weight: bold;
+
+.quiz-question {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.quiz-answers {
+  margin-top: 1.5rem;
+  list-style-type: none;
+  padding-left: 0;
+  background: rgb(85, 84, 84);
+  color: black;
+  font-weight: bold;
+  &__answer {
+    padding: .5rem 0 .5rem 0;
+    margin: .1rem 0 .1rem 0;
+    border: 1px solid grey;
+    a {
+      text-decoration: none;
+      color: black;
+    }
     &:hover {
       background: #3db5da;
-      cursor: pointer;
+      cursor: pointer;   
     }
   }
 }
 
-.btn {
-  margin: 0 .5rem;
+.quiz-button {
+  margin-top: 1.5rem;
 }
+
+.btn {
+  margin: 0 .5em;
+  padding: .6em 1em .6em 1em;
+  font-weight: bold;
+  color: rgb(65, 58, 58);
+  font-size: .9em;
+  transition: 0.3s;
+  &:hover {
+    cursor: pointer;
+
+  }
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 
 .next-btn {
   background-color: #C87944;
@@ -165,7 +203,7 @@
 }
 
 .selected {
-  background: #3db5da;
+  background: #2c89a5;
 }
 
 .correct {
@@ -176,6 +214,25 @@
   background: rgb(194, 68, 68);
 }
 
+@media only screen and (min-width: 500px) {
+
+  .container {
+    // text-align: center;
+    width: 40%
+  }
+
+  .quiz {
+    background: grey;
+    padding:2rem;
+    // text-align: center;
+  }
+
+  .quiz-question {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+}
 
 
 </style>
