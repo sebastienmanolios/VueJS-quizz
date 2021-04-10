@@ -133,9 +133,9 @@
 }
 
 .quiz {
-  padding-top: 1rem;
+  padding: 1rem;
   margin-top: .5rem;
-  background-color: rgb(190, 178, 178);
+  background-color: rgb(153, 143, 143);
   box-shadow: 10px 23px 48px 6px rgba(0,0,0,0.75);
   -webkit-box-shadow: 10px 23px 48px 6px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 23px 48px 6px rgba(0,0,0,0.75);
@@ -177,7 +177,6 @@
   margin: 0 .5em;
   padding: .6em 1em .6em 1em;
   font-weight: bold;
-  color: rgb(65, 58, 58);
   font-size: .9em;
   transition: 0.3s;
   &:hover {
@@ -199,7 +198,8 @@ button[disabled]{
 }
 
 .submit-btn {
-  background-color: #DA5877;
+  background-color: #80263b;
+  color: black;
 }
 
 .selected {
@@ -217,19 +217,15 @@ button[disabled]{
 @media only screen and (min-width: 500px) {
 
   .container {
-    // text-align: center;
-    width: 40%
+    width: 60%
   }
 
   .quiz {
-    background: grey;
     padding:2rem;
-    // text-align: center;
   }
 
   .quiz-question {
     font-size: 1.6rem;
-    font-weight: bold;
   }
 
 }

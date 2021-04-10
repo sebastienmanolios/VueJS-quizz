@@ -30,7 +30,7 @@
     background: rgb(131,58,180);
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(130,49,66,1) 50%, rgba(252,176,69,1) 100%);
     display: inline-block;
-    margin: .8rem 0 2rem 0;
+    margin: 1.5rem 0 2rem 0;
     padding: 1.2rem 1.2rem;
     border-radius: 50%;
     margin-bottom: 2rem;
@@ -38,28 +38,16 @@
   }
 }
 
-@media only screen and (min-width: 500px) {
-  .main-secondary-title {
-    margin-bottom: 2rem;
-  }
+@media only screen and (min-width: 600px) {
 
   .main {
-    margin-top: 3rem;
+    margin-top: 4rem;
     &-title {
-      font-size: 3.5rem;
-      font-weight: bold;
-      color: black;
+      font-size: 3.8rem;
     }
     &-secondary-title {
-      font-weight: bold;
-      color: black;
-      background: rgb(131,58,180);
-      background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(130,49,66,1) 50%, rgba(252,176,69,1) 100%);
-      display: inline-block;
-      margin: .8rem 0 2rem 0;
-      padding: 1.2rem 1.2rem;
-      border-radius: 50%;
-      box-shadow: rg;
+      font-size: 1.8rem;
+      margin: 2.7rem 0 3.3rem 0;
     }
   }
 }
