@@ -11,7 +11,7 @@
 
   https://www.youtube.com/watch?v=4deVCNJq3qc&list=RDCMUC8butISFwT-Wl7EV0hUK0BQ&start_radio=1
 
-  I get rid of Bootstrap Vue
+  I get rid of Bootstrap Vue  
   I added some functionnalities and I modified the visual of the page according to my taste.
 
   Some more functionnalities mmight be added to this project in order to maximise the UI
@@ -19,8 +19,8 @@
   - Add a component to display the final score on the 10th question
   - Choose quiz by theme in adding a parent component which will call the API depending of the choosen theme
   - let the user choose the number of questions he wants to answer
-  - Possibility of connection ---> COUPLER AVEC Node.JS en BACK !!!!
-
+  - Possibility of connection for a user
+  
   ### Logical
 
   How many variables do I need ?
