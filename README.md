@@ -11,6 +11,7 @@
 
   https://www.youtube.com/watch?v=4deVCNJq3qc&list=RDCMUC8butISFwT-Wl7EV0hUK0BQ&start_radio=1
 
+  I get rid of Bootstrap Vue
   I added some functionnalities and I modified the visual of the page according to my taste.
 
   Some more functionnalities mmight be added to this project in order to maximise the UI
