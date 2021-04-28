@@ -1,37 +1,35 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="quiz">
-        <div class="quiz-question">
-          <span v-html="currentQuestion.question"></span>
-        </div>
-        <ul class="quiz-answers">
-          <li 
-            class="quiz-answers__answer" 
-            v-for="(answer, index) in mixedAnswers" 
-            :key="index"
-            @click="selectAnswer(index)"  
-            :class="answerClass(index)"
-            >
-            <span v-html="answer"></span>
-          </li>
-        </ul>
-        <div class="quiz-button">
-          <button 
-            class="btn submit-btn"
-            @click="submitAnswer"
-            :disabled="selectedIndex === null || answered"
-            >
-          Submit
-          </button>
-          <button 
-            class="btn next-btn"
-            @click="next"
-            :disabled="selectedIndex === null || !answered"  
+  <div class="container">
+    <div class="quiz">
+      <div class="quiz-question">
+        <span v-html="currentQuestion.question"></span>
+      </div>
+      <ul class="quiz-answers">
+        <li 
+          class="quiz-answers__answer" 
+          v-for="(answer, index) in mixedAnswers" 
+          :key="index"
+          @click="selectAnswer(index)"  
+          :class="answerClass(index)"
           >
-          Next
-          </button>
-        </div>
+          <span v-html="answer"></span>
+        </li>
+      </ul>
+      <div class="quiz-button">
+        <button 
+          class="btn submit-btn"
+          @click="submitAnswer"
+          :disabled="selectedIndex === null || answered"
+          >
+        Submit
+        </button>
+        <button 
+          class="btn next-btn"
+          @click="next"
+          :disabled="selectedIndex === null || !answered"  
+        >
+        Next
+        </button>
       </div>
     </div>
 
@@ -60,6 +58,12 @@
         answered: false
       }
     },
+    // A watcher is needed here in order to shuffle the right answer among the wrong answers
+    // We want the correct answer mixed into the array of all the answers, otherwise it will appear
+    // each time at the same place for the user
+    // This watcher is called everytime the question is changed. 
+    // Instead of making watch a function, it is possible to make it as an objet with a handler
+    // immediate => when current question first get passed as prop, it is also running ! nice
     watch: {
       currentQuestion: {
         immediate: true,
@@ -99,6 +103,7 @@
         let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer]
       // using lodash's shuffle
         this.mixedAnswers = _.shuffle(answers)
+      // Saving the correct answer from the shuffle array
         this.correctIndex = this.mixedAnswers.indexOf(this.currentQuestion.correct_answer)
       },
 
@@ -118,7 +123,6 @@
            
     },
 
-    // Good place to console.log received data from the parent
     mounted() {
       console.log('the received question from the parent is : ' + this.currentQuestion.question)
     }

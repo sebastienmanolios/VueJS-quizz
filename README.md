@@ -11,7 +11,9 @@
 
   https://www.youtube.com/watch?v=4deVCNJq3qc&list=RDCMUC8butISFwT-Wl7EV0hUK0BQ&start_radio=1
 
-  I am going to add some more functionnalities
+  I added some functionnalities and I modified the visual of the page according to my taste.
+
+  Some more functionnalities mmight be added to this project in order to maximise the UI
 
   - Add a component to display the final score on the 10th question
   - Choose quiz by theme in adding a parent component which will call the API depending of the choosen theme
@@ -28,7 +30,7 @@
   - Only Next Button enabled when an answer has been submitted
   - Method which verify if the selected Index is the right answer on clicking on Submit --> submitAnswer()
   - Method which colorize the answers depends on if the answer has been selected or submitted (right or wrong)
-    in order to let the user about his response. 
+    in order to let the user know about his response. 
 
 
 ## Project setup

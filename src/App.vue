@@ -49,6 +49,7 @@
     },
 
     // Sarah Drasner prefers calling APIs in created() lifecycle hook
+    // I am choosing the type and the number of questions I want from the API
     mounted: function () {
       fetch('https://opentdb.com/api.php?amount=10&category=29', {
         method: 'get'
@@ -60,6 +61,19 @@
           this.questions = jsonData.results
         })
     }
+    // The Json received is an array of 10 objects like this one
+    // {
+    //   "category": "Entertainment: Comics",
+    //   "type": "multiple",
+    //   "difficulty": "medium",
+    //   "question": "What&#039;s the name of Batman&#039;s parents?",
+    //   "correct_answer": "Thomas &amp; Martha",
+    //   "incorrect_answers": [
+    //     "Joey &amp; Jackie",
+    //     "Jason &amp; Sarah",
+    //     "Todd &amp; Mira"
+    //   ]
+    // }
   };
 </script>
 
